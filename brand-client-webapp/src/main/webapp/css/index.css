@@ -1,0 +1,149 @@
+.t3-wrapper {
+	background: #ffffff;
+	position: relative;
+	left: 0;
+	z-index: 99;
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+	overflow: visible;
+	min-width: 1170px !important;
+}
+
+.t3-module {
+	background: transparent;
+	color: inherit;
+	margin-bottom: 26px;
+	margin-bottom: 5px;
+}
+
+.t3-module {
+	background: transparent;
+	color: inherit;
+	margin-bottom: 26px;
+	margin-bottom: 5px;
+}
+
+.module-ct {
+	background: transparent;
+	color: inherit;
+	padding: 0;
+}
+
+.noo-slideshow .custom {
+	background-size: cover;
+}
+
+.t3-module .mod-banner {
+	height: auto;
+	text-align: left;
+}
+
+.t3-module .mod-banner h3 {
+	font-family: Georgia, "Times New Roman", "Microsoft YaHei", 微软雅黑,
+		STXihei, 华文细黑, serif;
+	font-size: 36px;
+	font-weight: lighter;
+	color: rgb(255, 255, 255);
+	padding: 80px 0px;
+	margin: 0px;
+}
+
+.noo-breadcrumbs ul.breadcrumb {
+	background: transparent;
+	text-align: right;
+	margin-top: -130px;
+	margin-right: 20px;
+}
+
+.breadcrumb {
+	margin-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	border-radius: 0;
+}
+
+.noo-breadcrumbs ul.breadcrumb li {
+	color: #ffffff;
+	font-size: 16px;
+}
+
+.breadcrumb>.active {
+	color: #999999;
+}
+
+.noo-breadcrumbs ul.breadcrumb li a {
+	color: #ffffff;
+}
+
+.breadcrumb .divider {
+	display: none;
+}
+
+.noo-breadcrumbs ul.breadcrumb li.active span {
+	text-decoration: underline;
+}
+
+.module-ct {
+	background: transparent;
+	color: inherit;
+	padding: 0;
+}
+
+blockquote {
+	padding: 13px 26px;
+	margin: 0 0 5px;
+	font-size: 16px;
+	border-left: 5px solid #c2c2c2;
+}
+
+blockquote footer, blockquote small, blockquote .small {
+	display: block;
+	font-size: 80%;
+	line-height: 1.62857143;
+	color: #999999;
+}
+
+blockquote footer:before, blockquote small:before, blockquote .small:before
+	{
+	content: '\2014 \00A0';
+}
+
+.t3-mainbody {
+    padding-top: 26px;
+    padding-bottom: 26px;
+}
+
+h1, .h1 {
+    font-size: 41px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 26px;
+    margin-bottom: 13px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: Georgia, "Times New Roman", "Microsoft YaHei", 微软雅黑, STXihei, 华文细黑, serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+tr th{
+	min-width:100px;
+}
+
+.breadcrumb > .active + li:before {
+    content: "";
+    padding: 0;
+}
+
+.panel-body p {
+    margin: 0 0 3px;
+}
+
+.panel-body table th, .panel-body table td {
+    line-height: 1.62857143;
+    text-align: left;
+    vertical-align: top;
+}

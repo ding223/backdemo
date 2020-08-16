@@ -1,0 +1,8 @@
+.input-width{
+	width:200px !important;
+	margin-right: 2px !important;
+}
+
+.layui-layout-right .layui-nav-item:hover {
+    background-color: #393D49 !important;
+}

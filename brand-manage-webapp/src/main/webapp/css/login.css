@@ -1,0 +1,266 @@
+body {
+	font-size: 12px;
+	margin: 0px;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.header {
+	height: 62px;
+	overflow: hidden;
+	zoom: 1;
+	border-bottom: 1px solid #d6dfea;
+	background: #eff4fa;
+}
+
+.header_link {
+	padding-right: 40px;
+}
+
+.header_link {
+	overflow: hidden;
+	margin-top: 16px;
+	padding-right: 17px;
+	line-height: 30px;
+	text-align: right;
+	color: #b6b6b6;
+}
+
+.header a, .footer a, .bottom a {
+	color: #1d5494;
+}
+
+.header_logo {
+	margin-left: 20px;
+	float: left;
+}
+
+.bubble-point {
+	background: url("../images/index/570738021983940758.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	width: 140px;
+	height: 160px;
+	padding-top: 30px;
+	text-align: center;
+	box-sizing: border-box;
+	left: 0;
+	transform: translate(-50%);
+	position: absolute;
+}
+
+.logo_content {
+	width: 960px;
+	margin: 32px auto;
+	padding: 0 24px;
+}
+
+.footer {
+	position: fixed;
+	_position: static;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+	clear: both;
+	height: 45px;
+	line-height: 40px;
+	text-align: center;
+	color: #b6b6b6;
+	background-color: #eff4fa;
+	border-top: 1px solid #d6dfea;
+}
+
+.content_wrapper {
+	height: 414px;
+	width: 915px;
+	padding-top: 40px;
+	margin: 0 20px 60px 25px;
+}
+
+.login_container {
+	float: right;
+	border: 1px solid #a0b1c4;
+	width: 334px;
+	height: 387px;
+	_height: 371px;
+	background-color: #fff;
+	position: relative;
+	padding: 0;
+	overflow: hidden;
+}
+
+.login {
+	margin: 0 auto;
+	width: 370px;
+	border: 2px solid #eee;
+	position: relative;
+	width: 334px;
+	border: 0px;
+	background-color: #ffffff;
+}
+
+.header, .login .header {
+	font-family: "lucida Grande", Verdana, "Microsoft YaHei";
+	border-bottom: 1px solid #c0cdd9;
+	background-color: #f9fbfe;
+	height: 60px;
+	border-bottom: 1px solid #e2e2e2;
+	position: relative;
+}
+
+.header .switch {
+	height: 45px;
+	position: absolute;
+	left: 60px;
+	bottom: 0;
+	font-size: 16px;
+	line-height: 42px;
+	padding-left: 90px;
+}
+
+.layui-form-item {
+	width: 285px;
+	padding-left: 20px;
+	padding-top: 25px;
+}
+
+.layui-form-item input {
+	border: 1px solid #96a5b4;
+}
+
+.login_pic {
+	float: left;
+}
+
+#userLoginForm input {
+	font-size: 16px;
+}
+
+.bottom {
+	height: 16px;
+	margin-bottom: 8px;
+	width: 315px;
+	position: absolute;
+	bottom: 0;
+	top: 350px;
+	text-align: right;
+	font-size: 12px;
+}
+
+.layui-input, .layui-textarea {
+	display: block;
+	width: 100%;
+	padding-left: 10px;
+}
+
+.layui-input:hover, .layui-textarea:hover {
+	border-color: #D2D2D2 !important;
+}
+
+.layui-input, .layui-select, .layui-textarea {
+	height: 38px;
+	line-height: 1.3;
+	line-height: 38px\9;
+	border-width: 1px;
+	border-style: solid;
+	background-color: #fff;
+	border-radius: 2px;
+}
+
+.layui-btn {
+	display: inline-block;
+	height: 38px;
+	line-height: 38px;
+	padding: 0 7px;
+	background-color: #009688;
+	color: #fff;
+	white-space: nowrap;
+	text-align: center;
+	font-size: 14px;
+	border: none;
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.layui-form-item {
+	margin-bottom: 15px;
+	clear: both;
+}
+
+.header_link:hover .skin_pop {
+	display: block;
+}
+
+.weixin_nr {
+	width: 100px;
+	height: 100px;
+	padding: 5px;
+	background: #c0cdd9;
+	text-align: center;
+	position: absolute;
+	right: 5px;
+	top: 50px;
+	display: none;
+}
+
+.weixin_nr img {
+	margin-bottom: 5px;
+}
+
+.weixin_nr .arrow {
+	width: 0;
+	height: 0;
+	border-bottom: 10px solid #c0cdd9;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	position: absolute;
+	left: 50px;
+	top: -10px;
+}
+
+.weixin.on .weixin_nr {
+	display: block;
+}
+
+.weixin.on a {
+	background: url(../images/wechat.png) no-repeat left bottom;
+}
+
+.wap_nr {
+	width: 100px;
+	height: 100px;
+	padding: 5px;
+	background: #c0cdd9;
+	text-align: center;
+	position: absolute;
+	right: 65px;
+	top: 50px;
+	display: none;
+}
+
+.wap_nr img {
+	margin-bottom: 5px;
+}
+
+.wap_nr .arrow {
+	width: 0;
+	height: 0;
+	border-bottom: 10px solid #c0cdd9;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	position: absolute;
+	left: 50px;
+	top: -10px;
+}
+
+.wap_nr.on .weixin_nr {
+	display: block;
+}
+
+.wap_nr.on a {
+	background: url(../images/qr_wap.png) no-repeat left bottom;
+}

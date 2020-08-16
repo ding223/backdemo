@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gqgx.common.mapper.SysMenuMapper">
+  <resultMap id="BaseResultMap" type="com.gqgx.common.entity.SysMenu">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="descption" jdbcType="VARCHAR" property="descption" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="sort" jdbcType="SMALLINT" property="sort" />
+    <result column="menu_icon" jdbcType="VARCHAR" property="menuIcon" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="ishas_city_permission" jdbcType="CHAR" property="ishasCityPermission" />
+    <result column="ishas_data_permission" jdbcType="CHAR" property="ishasDataPermission" />
+    <result column="record_status" jdbcType="CHAR" property="recordStatus" />
+    <result column="update_count" jdbcType="INTEGER" property="updateCount" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+  </resultMap>
+
+  <resultMap id="menuPowerListMapVo" type="com.gqgx.common.entity.SysMenu" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="menu_check1" property="isCheck" jdbcType="VARCHAR" />
+    <collection property="childs" ofType="com.gqgx.common.entity.ChildSysMenu">
+      <id column="item_id" property="id" jdbcType="BIGINT" />
+      <result column="item_name" property="name" jdbcType="VARCHAR" />
+      <result column="menu_check2" property="isCheck" jdbcType="VARCHAR" />
+      <collection property="operations" ofType="com.gqgx.common.entity.SysMenuOperation">
+        <id column="option_id" property="id" jdbcType="BIGINT" />
+        <result column="option_name" property="name" jdbcType="VARCHAR" />
+        <result column="menu_check3" property="isCheck" jdbcType="VARCHAR" />
+      </collection>
+    </collection>
+  </resultMap>
+
+  <resultMap id="BaseResultMapvo" type="com.gqgx.common.entity.vo.SortableVo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <collection property="items" ofType="com.gqgx.common.entity.vo.SortableItemVo">
+      <id column="item_id" property="itemId" jdbcType="BIGINT" />
+      <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    </collection>
+  </resultMap>
+  <!--菜单管理，获取菜单列表-->
+  <select id="sortableList"  resultMap="BaseResultMapvo" >
+    select
+    par.id,par.name,
+    child.id item_id,child.name item_name from sys_menu par
+    left join sys_menu child on par.id=child.parent_id and child.record_status='A'
+    where par.parent_id is null and par.record_status='A'  order by par.sort ,child.sort
+  </select>
+
+  <!--根据用户id获取菜单列表-->
+  <select id="menuPowerList" resultMap="menuPowerListMapVo" parameterType="java.lang.Long">
+    SELECT
+    par.id,
+    par.NAME,
+    child.id item_id,
+    child.NAME item_name,
+    smo.id option_id,
+    smo.NAME option_name,
+    IF(pmenu1.id,'check','') menu_check1,
+    IF(pmenu2.id,'check','') menu_check2,
+    IF(pon.id,'check','') menu_check3
+    FROM
+    sys_menu par
+    LEFT JOIN sys_position_menu pmenu1 on pmenu1.menu_id = par.id and pmenu1.record_status = 'A'
+    and pmenu1.position_id = #{positionId}
+    LEFT JOIN sys_menu child ON par.id = child.parent_id AND child.record_status = 'A'
+    LEFT JOIN sys_position_menu pmenu2 on pmenu2.menu_id = child.id and pmenu2.record_status = 'A'
+    and pmenu2.position_id = #{positionId}
+    LEFT JOIN sys_menu_operation smo ON smo.menu_id = child.id AND smo.record_status = 'A'
+    LEFT JOIN sys_position_operation pon on pon.menu_operation_id = smo.id and pon.record_status = 'A'
+    and pon.position_id = #{positionId}
+    WHERE
+    par.parent_id IS NULL AND par.record_status = 'A'
+    ORDER BY
+    par.sort,
+    child.sort,
+    smo.sort
+  </select>
+
+  <!--根据主键id批量删除-->
+  <delete id="deleteByIds">
+    delete from sys_menu where id in
+    <foreach item="id" collection="ids" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+</mapper>

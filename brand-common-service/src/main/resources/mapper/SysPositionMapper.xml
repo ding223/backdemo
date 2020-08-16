@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gqgx.common.mapper.SysPositionMapper">
+  <resultMap id="BaseResultMap" type="com.gqgx.common.entity.SysPosition">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="department_id" jdbcType="BIGINT" property="departmentId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="record_status" jdbcType="CHAR" property="recordStatus" />
+    <result column="update_count" jdbcType="INTEGER" property="updateCount" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+    <result column="data_power" jdbcType="CHAR" property="dataPower" />
+  </resultMap>
+
+  <resultMap id="BaseResultMapVo" type="com.gqgx.common.entity.vo.SysPositionVo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="supId" property="supId" jdbcType="BIGINT" />
+  </resultMap>
+
+  <!--根据用户id获取职位列表-->
+  <select id="findPositionList" parameterType="java.lang.Long" resultMap="BaseResultMapVo" >
+    select
+    sp.id,sp.name ,sup.id supId
+    from sys_position sp
+    left join sys_user_position  sup on sp.id=sup.position_id and sup.record_status='A' and sup.user_id=#{userId}
+    where sp.record_status='A' order by sp.create_date
+  </select>
+
+  <select id="findPositionByParams" parameterType="map" resultMap="BaseResultMap" >
+    SELECT
+    t.id,
+    t.name,
+    t.remark,
+    t.department_name,
+    t.department_id,
+    t.data_power,
+    t.create_date,
+    t.record_status
+    from (
+    SELECT
+    a.id,
+    a.department_id,
+    a.name,
+    a.remark,
+    a.data_power,
+    b.name AS department_name,
+    a.record_status,
+    a.create_date
+    FROM
+    sys_position a
+    LEFT JOIN sys_department b ON a.department_id = b.id
+    AND a.company_id = b.company_id
+    AND b.record_status = 'A'
+    LEFT JOIN sys_position_menu c ON a.id=c.position_id
+    AND a.company_id=c.company_id
+    AND c.record_status='A'
+    WHERE
+    a.record_status = 'A'
+    <if test="params.name != null">
+      AND a.name LIKE CONCAT('%',#{params.name},'%')
+    </if>
+    <if test="params.departmentId != null">
+      AND a.department_id=#{params.departmentId}
+    </if>
+    <if test="params.companyId != null">
+      AND a.company_id=#{params.companyId}
+    </if>
+    <if test="params.sysMenuId != null">
+      AND c.menu_id=#{params.sysMenuId}
+    </if>
+    GROUP BY a.id
+    ) t
+  </select>
+
+  <!--根据主键id批量删除-->
+  <delete id="deleteByIds">
+    delete from sys_position where id in
+    <foreach item="id" collection="ids" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+</mapper>

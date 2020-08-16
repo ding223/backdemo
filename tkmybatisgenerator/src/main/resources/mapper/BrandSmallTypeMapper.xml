@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gqgx.common.mapper.BrandSmallTypeMapper">
+  <resultMap id="BaseResultMap" type="com.gqgx.common.entity.BrandSmallType">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="large_type_id" jdbcType="BIGINT" property="largeTypeId" />
+    <result column="no" jdbcType="VARCHAR" property="no" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="record_status" jdbcType="CHAR" property="recordStatus" />
+    <result column="update_count" jdbcType="INTEGER" property="updateCount" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+  </resultMap>
+</mapper>

@@ -1,0 +1,178 @@
+body{
+	color: #495060 !important;
+}
+
+.input {
+	border-radius: 0px !important;
+	border: 1px solid #009688 !important;
+}
+
+.button {
+	margin-left: -3px !important;
+	border-radius: 0px !important;
+}
+
+#allJurisdiction dd {
+	padding-left: 35px;
+}
+
+.allJurisdiction {
+	width: 100px;
+	position: absolute;
+	top: 40px;
+	right: 13px;
+	display: none;
+	background: white;
+	z-index: 99999;
+}
+
+.allJurisdiction dl {
+	display: block;
+	top: 10px !important;
+}
+
+.advancedSeach {
+	width: 379px;
+	border: 1px solid #009688;
+	position: absolute;
+	top: 47px;
+	right: 10px;
+	display: none;
+	background: white;
+	z-index: 9999;
+}
+
+.advancedSeach form{
+	margin: 20px;
+}
+
+.page_body{
+	margin: 10px;
+}
+
+.page_tool {
+	border-bottom: 1px solid #009688;
+	height: 50px;
+}
+
+.page_tool_input{
+	margin-right: 0px !important;
+}
+
+.page_tool_bt1{
+	padding-right: 10px !important;
+}
+
+.page_tool_bt2{
+	padding-right: 5px !important;
+}
+
+.editform .layui-input-block{
+	margin-bottom: 15px !important;
+}
+
+.editform .layui-input-block{
+	margin-left: 110px !important;
+}
+
+.layui-layer-btn- {
+    border-top: 1px solid #ddd !important;
+    
+}
+
+.editform{
+	margin-top: 20px !important;
+}
+
+.editform .layui-form-label{
+	width: 80px !important;
+}
+
+.editform .label-item li {
+    display: inline-block;
+    height: 27px;
+    line-height: 27px;
+    font-size: 12px;
+    padding: 0 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    color: #666;
+}
+
+.editform .label-item a {
+	margin-right:10px;
+}
+
+.editform label.error{
+	color: red;
+    top: 10px;
+    right: 10px;
+    position: absolute;
+    z-index: 99999;
+}
+
+.editform label.select-error{
+	color: red;
+    top: 10px;
+    right: 30px;
+    position: absolute;
+    z-index: 99999;
+}
+
+.editform .layui-input{
+	color: #495060 !important;
+}
+
+.label-selected {
+    width: 100%;
+    min-height: 38px;
+    margin-bottom: 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    background-color: #fff;
+    position: relative;
+}
+
+.label-selected li {
+    display: inline-block;
+    height: 27px;
+    line-height: 27px;
+    font-size: 12px;
+    padding: 0 10px;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 4px 2px;
+    color: #666;
+}
+
+.labelItem {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.label-item {
+    border: 1px solid #e6e6e6;
+    padding: 10px;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 15px;
+}
+
+.selected {
+    color: #009f95 !important;
+}
+
+.layui-tab-title li:hover{
+	color: #009f95 !important;
+}
+
+.need-fillin{
+	color: red;
+	font-size:18px;
+}

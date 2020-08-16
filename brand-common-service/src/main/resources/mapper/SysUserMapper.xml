@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gqgx.common.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.gqgx.common.entity.SysUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="account_name" jdbcType="VARCHAR" property="accountName" />
+    <result column="pass_word" jdbcType="VARCHAR" property="passWord" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="sex" jdbcType="CHAR" property="sex" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="entry_date" jdbcType="TIMESTAMP" property="entryDate" />
+    <result column="department_id" jdbcType="BIGINT" property="departmentId" />
+    <result column="photo_id" jdbcType="BIGINT" property="photoId" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="contacts" jdbcType="VARCHAR" property="contacts" />
+    <result column="contacts_phone" jdbcType="VARCHAR" property="contactsPhone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="school" jdbcType="VARCHAR" property="school" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="graduation" jdbcType="TIMESTAMP" property="graduation" />
+    <result column="education" jdbcType="CHAR" property="education" />
+    <result column="origin" jdbcType="VARCHAR" property="origin" />
+    <result column="race" jdbcType="VARCHAR" property="race" />
+    <result column="marriage" jdbcType="CHAR" property="marriage" />
+    <result column="political" jdbcType="VARCHAR" property="political" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="user_status" jdbcType="CHAR" property="userStatus" />
+    <result column="user_type" jdbcType="CHAR" property="userType" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="record_status" jdbcType="CHAR" property="recordStatus" />
+    <result column="update_count" jdbcType="INTEGER" property="updateCount" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+    <result column="branch_company_id" jdbcType="BIGINT" property="branchCompanyId" />
+  </resultMap>
+
+  <!-- 查询用户权限 -->
+  <resultMap type="com.gqgx.common.entity.SysUser" id="roleUserMap">
+    <id column="A_id" property="id" jdbcType="BIGINT" />
+    <result column="A_account_name" property="accountName" jdbcType="VARCHAR" />
+    <result column="A_pass_word" property="passWord" jdbcType="VARCHAR" />
+    <result column="A_name" property="name" jdbcType="VARCHAR" />
+    <result column="A_code" property="code" jdbcType="VARCHAR" />
+    <result column="data_power" property="dataPower" jdbcType="VARCHAR" />
+    <result column="A_company_abb" property="companyAbb" jdbcType="VARCHAR" />
+    <result column="A_company_address" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="A_company_url" property="companyUrl" jdbcType="VARCHAR" />
+    <result column="A_company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="A_phone" property="phone" jdbcType="VARCHAR" />
+    <result column="A_email" property="email" jdbcType="VARCHAR" />
+    <result column="A_company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="A_user_status" property="userStatus" jdbcType="CHAR" />
+    <result column="A_company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="A_department_id" property="departmentId" jdbcType="BIGINT" />
+    <collection property="sysMenus" ofType="com.gqgx.common.entity.SysMenu">
+      <id column="d_id" property="id" jdbcType="BIGINT" />
+      <result column="d_parent_id" property="parentId" jdbcType="BIGINT" />
+      <result column="d_name" property="name" jdbcType="VARCHAR" />
+      <result column="d_menu_icon" property="menuIcon" jdbcType="VARCHAR" />
+      <result column="d_code" property="code" jdbcType="VARCHAR" />
+      <result column="d_desc" property="descption" jdbcType="VARCHAR" />
+      <result column="d_url" property="url" jdbcType="VARCHAR" />
+      <result column="d_sort" property="sort" jdbcType="SMALLINT" />
+      <result column="d_company_id" property="companyId" jdbcType="BIGINT" />
+    </collection>
+    <collection property="menuOperations" ofType="com.gqgx.common.entity.SysMenuOperation">
+      <id column="f_id" property="id" jdbcType="BIGINT" />
+      <result column="f_menu_id" property="menuId" jdbcType="BIGINT" />
+      <result column="f_parent_id" property="parentId" jdbcType="BIGINT" />
+      <result column="f_name" property="name" jdbcType="VARCHAR" />
+      <result column="f_code" property="code" jdbcType="VARCHAR" />
+      <result column="f_url" property="url" jdbcType="VARCHAR" />
+      <result column="f_sort" property="sort" jdbcType="INTEGER" />
+      <result column="f_remark" property="remark" jdbcType="VARCHAR" />
+      <result column="f_company_id" property="companyId" jdbcType="BIGINT" />
+    </collection>
+  </resultMap>
+
+  <!--用户详情-->
+  <resultMap type="com.gqgx.common.entity.SysUser" id="userDetailMap">
+    <id column="A_id" property="id" jdbcType="BIGINT" />
+    <result column="A_account_name" property="accountName" jdbcType="VARCHAR" />
+    <result column="A_pass_word" property="passWord" jdbcType="VARCHAR" />
+    <result column="A_name" property="name" jdbcType="VARCHAR" />
+    <result column="A_code" property="code" jdbcType="VARCHAR" />
+    <result column="data_power" property="dataPower" jdbcType="VARCHAR" />
+    <result column="A_company_abb" property="companyAbb" jdbcType="VARCHAR" />
+    <result column="A_company_address" property="companyAddress" jdbcType="VARCHAR" />
+    <result column="A_company_url" property="companyUrl" jdbcType="VARCHAR" />
+    <result column="A_company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="A_phone" property="phone" jdbcType="VARCHAR" />
+    <result column="A_email" property="email" jdbcType="VARCHAR" />
+    <result column="A_company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="A_user_status" property="userStatus" jdbcType="CHAR" />
+    <result column="A_company_id" property="companyId" jdbcType="BIGINT" />
+    <result column="A_department_id" property="departmentId" jdbcType="BIGINT" />
+    <result column="department_name" property="departmentName" jdbcType="VARCHAR" />
+    <result column="position_name" property="positionName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!--根据主键id批量删除-->
+  <delete id="deleteByIds">
+    delete from sys_user where id in
+    <foreach item="id" collection="ids" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+
+  <select id="findUserDetailList" parameterType="map" resultMap="userDetailMap">
+    SELECT
+      A.id AS A_id,
+      A.account_name AS A_account_name,
+      A.pass_word AS A_pass_word,
+      A.NAME AS A_name,
+      A.CODE AS A_code,
+      A.user_status AS A_user_status,
+      A.company_id AS A_company_id,
+      A.department_id AS A_department_id,
+      A.phone AS A_phone,
+      A.email AS A_email,
+      d.name AS department_name,
+      c.name AS position_name
+    FROM
+    sys_user a
+    LEFT JOIN sys_user_position b ON a.id = b.user_id AND b.record_status = 'A'
+    LEFT JOIN sys_position c ON c.id = b.position_id AND c.record_status = 'A'
+       LEFT JOIN sys_department d ON d.id = a.department_id AND d.record_status = 'A'
+    WHERE
+    a.record_status = 'A'
+  </select>
+
+  <!--查询用户权限-->
+  <select id="findUserByAccountName" parameterType="map" resultMap="roleUserMap">
+    SELECT
+    A.id AS A_id,
+    A.account_name AS A_account_name,
+    A.pass_word AS A_pass_word,
+    A.NAME AS A_name,
+    A.CODE AS A_code,
+    A.user_status AS A_user_status,
+    A.company_id AS A_company_id,
+    A.department_id AS A_department_id,
+    A.phone as A_phone,
+    A.email as A_email,
+    d.id AS d_id,
+    d.parent_id AS d_parent_id,
+    d.NAME AS d_name,
+    d.CODE AS d_code,
+    d.descption AS d_desc,
+    d.url AS d_url,
+    d.sort AS d_sort,
+    d.company_id AS d_company_id,
+    d.menu_icon as d_menu_icon,
+    f.id AS f_id,
+    f.menu_id AS f_menu_id,
+    f.parent_id AS f_parent_id,
+    CONCAT(d.NAME, '-', f.NAME) AS f_name,
+    f.CODE AS f_code,
+    f.url AS f_url,
+    f.sort AS f_sort,
+    f.remark AS f_remark,
+    (
+    select
+      max(sp.data_power)
+      from sys_user_position sup
+      inner join sys_position sp on sp.id=sup.position_id and sp.record_status='A'
+      where sup.record_status='A' and sup.user_id=a.id
+    )data_power
+    FROM
+    sys_user a
+    LEFT JOIN sys_user_position b ON a.id = b.user_id AND b.record_status = 'A'
+    LEFT JOIN sys_position_menu c ON c.position_id = b.position_id AND c.record_status = 'A'
+    LEFT JOIN sys_menu d ON d.id = c.menu_id AND d.record_status = 'A'
+    LEFT JOIN sys_position_operation e ON b.position_id = e.position_id and d.id=e.menu_id AND e.record_status = 'A'
+    LEFT JOIN sys_menu_operation f ON e.menu_operation_id=f.id AND f.record_status='A'
+    WHERE
+      a.record_status = 'A'
+      and a.account_name = #{accountName}
+    ORDER BY d.sort ASC,f.sort ASC
+  </select>
+
+</mapper>

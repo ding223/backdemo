@@ -1,0 +1,63 @@
+.editform:hover {
+	border-color: green;
+}
+
+.layui-icon:hover {
+	color: green;
+}
+
+.followImg {
+	width: 80px;
+	height: 50px;
+	border: 1px solid #e6e6e6;
+	padding:5px;
+}
+
+.layui-textarea{
+	border-bottom: none;
+}
+
+.editform {
+	margin: 20px;
+	border: 1px solid #e6e6e6;
+	border-radius: 2px;
+}
+
+.layui-textarea {
+	border: none;
+}
+
+.del-followImg {
+	width: 100%;
+	background: #000;
+	opacity: .3;
+	font-size: 12px;
+	line-height: 1.5;
+	height: 18px;
+	text-align: center;
+	color: #e0dfdf;
+	cursor: pointer;
+}
+
+.del-followImg:hover{
+	opacity: .5;
+}
+
+div ul {
+	list-style: none;
+	padding: 0px;
+	width: auto;
+}
+
+div ul li {
+	float: left;
+	margin-right: 10px;
+}
+
+.follow-tr{
+	border-bottom: 1px solid #f6f6f6;
+}
+
+.follow-img{
+	width:100px;height:50px;margin:10px;border:1px solid #e6e6e6;
+}

@@ -1,0 +1,60 @@
+ .column {
+    width:25%;
+    float: left;
+  }
+  .portlet {
+    margin: 0 1em 1em 0;
+    padding: 0.3em;
+    background: #fff;
+    font-size: 16px;
+    border:1px solid #ccc;
+  }
+  .portlet-header {
+    padding: 0.2em 0.3em;
+    margin-bottom: 0.5em;
+    position: relative;
+  }
+  .portlet-content {
+ 	 height:320px;
+ 	 overflow:auto;
+     padding: 0.4em;
+  }
+ .sortableItem { list-style-type: none; margin: 0; padding: 0; }
+ .sortableItem li { margin: 5px; padding: 10px; font-size: 14px;  }
+ .sortableItem li span { position: absolute;margin-bottom: 5px; }
+ .sortableItemButton{margin:5px;margin-top:12px;}
+ .sortableItem li:hover{
+ 	border-color: #009f95;
+ 	color: #009f95;
+ 	cursor: move;
+ }
+ .sortableItem li .layui-icon{
+ 	padding-right:10px;
+ 	font-size:18px;
+ }
+ .sortableItem li .layui-icon:hover{
+ 	cursor: pointer;
+ }
+ 
+ .sortable-header{
+ 	border-bottom: 2px solid rgb(243, 243, 244);
+ 	height:30px;
+ }
+ 
+ .sortable-header:hover{
+ 	border-bottom: 2px solid #009f95;
+ 	color: #009f95;
+ 	cursor: move;
+ }
+ 
+ .portlet:hover{
+ 	border:1px solid #009f95;
+ }
+ 
+ .ui-widget-content:hover {
+ 	border:1px solid #009f95;
+ }
+ 
+ .ui-widget-content{
+ 	border: none !important;
+ }

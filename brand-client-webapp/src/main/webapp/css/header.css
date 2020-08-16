@@ -1,0 +1,222 @@
+.t3-header {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.33);
+}
+
+.container {
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 1170px !important;
+}
+
+.logo {
+	text-align: left;
+	padding-top: 35px;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	-ms-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.logo a {
+	display: inline-block;
+	line-height: 1;
+	margin: 0;
+}
+
+img {
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+.logo-image span, .logo-image small {
+	display: none;
+}
+
+small, .small {
+	font-size: 85%;
+}
+
+.t3-mainnav {
+	border-left: 0;
+	border-right: 0;
+	margin-bottom: 0;
+	border-radius: 0;
+	float: right;
+}
+
+.navbar-default {
+	background-color: transparent;
+	border-color: rgba(0, 0, 0, 0);
+}
+
+.navbar {
+	position: relative;
+	min-height: 60px;
+	border: 1px solid transparent;
+}
+
+.t3-mainnav .t3-navbar {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+	border-color: rgba(0, 0, 0, 0);
+}
+
+@media ( min-width : 2px) .navbar-nav {
+	margin
+	:
+	 
+	0;
+}
+
+.navbar-nav>li {
+	padding: 20px 0;
+	-webkit-transition: all 0.4s ease;
+	-moz-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	-ms-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover,
+	.navbar-default .navbar-nav>.open>a:focus {
+	background-color: transparent;
+	color: #21c2f8;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: #2f3339;
+	font-size: 18px;
+}
+
+.x_left_one {
+	width: 12px;
+	height: 16px;
+	margin-top: 6px;
+	background: url(https://www.guoqigengxin.com/images/icon_top_header.png)
+		no-repeat left -62px;
+}
+
+.x_left {
+	position: absolute;
+    z-index: 1000;
+    top:0px;
+	width: 150px;
+}
+
+.fl {
+	float: left;
+	display: inline;
+}
+
+.x_left_two {
+	width: auto;
+	padding: 0px 5px;
+	height: 12px;
+	margin-top: 9px;
+	line-height: 12px;
+	font-size: 12px;
+	color: #888;
+}
+
+.x_bottom{
+	width: 530px;
+    height: auto;
+    background: #fff;
+    position: absolute;
+    z-index: 1000;
+    border-width: 1px;
+	border-color: rgb(221, 221, 221);
+	border-style: solid;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.24);
+	top:30px;
+}
+
+.x_bottom_jian{
+	width: 19px;
+    height: 11px;
+    position: absolute;
+    margin-top: -10px;
+    margin-left: 13px;
+}
+
+.x_bottom_jian img{
+	position: absolute;
+}
+
+.x_city{
+	width:100%;
+	height:auto;
+	min-height:50px;
+	margin:0 auto;
+	font-size: 12px;
+}
+
+.x_city ul li{
+	min-width: 60px !important;
+    height: 21px !important;
+    float: left;
+    margin-left: 5px;
+    border: 1px solid #f9a920;
+    text-align: center;
+    line-height: 23px;
+    margin-top: 13px;
+    display: block;
+    color:#f9a920;
+    cursor: pointer;
+}
+
+.x_city #sites a{
+	color: #f9a920 !important;
+}
+
+.x_city ul li:hover{
+	min-width: 60px !important;
+    height: 21px !important;
+    line-height: 21px !important;
+    background: url(../images/gou_si.png) no-repeat 100% 100%;
+}
+
+.x_active{
+	min-width: 60px !important;
+    height: 21px !important;
+    line-height: 21px !important;
+    background: url(../images/gou_si.png) no-repeat 100% 100%;
+}
+
+.more:hover {
+	color: #21c2f8 !important;
+	border: 1px solid #21c2f8 !important;
+}
+
+.list-striped, .row-striped {
+    list-style: none;
+    line-height: 26px;
+    text-align: left;
+    vertical-align: middle;
+    border-top: 1px solid #dddddd;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 13px;
+}
+
+.list-striped li:nth-child(odd), .list-striped dd:nth-child(odd), .row-striped .row:nth-child(odd), .row-striped .row-fluid:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+.list-condensed li {
+    padding: 5px 10px;
+}
+.list-striped li, .list-striped dd, .row-striped .row, .row-striped .row-fluid {
+    border-bottom: 1px solid #dddddd;
+}

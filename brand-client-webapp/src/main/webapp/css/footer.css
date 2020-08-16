@@ -1,0 +1,10 @@
+.t3-footer {
+    background: url(../images/bg-footer.png) left top;
+    color: #c2c2c2;
+    border-bottom: 1px solid #222;
+}
+
+.wrap {
+    width: auto;
+    clear: both;
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gqgx.common.mapper.SysPositionMapper">
+  <resultMap id="BaseResultMap" type="com.gqgx.common.entity.SysPosition">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="department_id" jdbcType="BIGINT" property="departmentId" />
+    <result column="company_id" jdbcType="BIGINT" property="companyId" />
+    <result column="record_status" jdbcType="CHAR" property="recordStatus" />
+    <result column="update_count" jdbcType="INTEGER" property="updateCount" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+    <result column="data_power" jdbcType="CHAR" property="dataPower" />
+  </resultMap>
+</mapper>

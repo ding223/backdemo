@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+	<!-- 使用Annotation自动注册Bean，解决事物失效问题：在主容器中不扫描@Controller注解，在SpringMvc中只扫描@Controller注解。  -->
+	<context:component-scan base-package="com.gqgx"><!-- base-package 如果多个，用“,”分隔 -->
+		<context:exclude-filter type="regex" expression="com.gqgx.action" />
+	</context:component-scan>
+
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:brand-jdbc-prod.properties"></property>
+	</bean>
+
+	<!-- 数据源配置, 使用 BoneCP 数据库连接池 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+
+		<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${jdbc.maxWait}" />
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+
+		<property name="validationQuery" value="SELECT 'x' from dual" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+
+		<!-- 配置监控统计拦截的filters -->
+		<!--<property name="filters" value="stat" />-->
+	</bean>
+	
+	<!-- <bean name="scheduler" lazy-init="false" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" >
+		<property name="dataSource" ref="dataSource"></property>
+        <property name="applicationContextSchedulerContextKey" value="applicationContextKey"/>
+        <property name="configLocation" value="classpath:quartz.properties"/>
+    </bean> -->
+
+	<!--SqlSessionFactoryBean为整合应用提供SqlSession对象资源-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:mybatis-config-mysql.xml"></property>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:mapper/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--MapperScannerConfigurer根据指定包批量扫描Mapper接口并生成实例-->
+	<!--<bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">-->
+		<!--<property name="basePackage" value="com.gqgx.common.mapper"></property>-->
+	<!--</bean>-->
+	<!-- 使用tk包的扫描类整合，Spring会自动查找其下的类 -->
+	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.gqgx.common.mapper" />
+		<property name="properties">
+			<value>
+				<!-- 通用mapper -->
+				mappers=tk.mybatis.mapper.common.Mapper
+			</value>
+		</property>
+	</bean>
+
+	<!-- 开启AOP监听-->
+	<aop:aspectj-autoproxy expose-proxy="true"/>
+
+	<!-- 开启注解事务 只对当前配置文件有效 proxy-target-class:允许直接注入实现类 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- 事务管理器配置,单数据源事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="add*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="create*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="insert*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="update*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="merge*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="delete*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="del*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="remove*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="payment*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			
+			<!-- 查询数据， 不需要开启事物 -->
+			<!-- <tx:method name="get*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="count*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="find*" propagation="REQUIRED" rollback-for="java.lang.Exception" />
+			<tx:method name="list*" propagation="REQUIRED" rollback-for="java.lang.Exception" /> -->
+		</tx:attributes>
+	</tx:advice>
+
+	<aop:config>
+		<aop:pointcut id="serviceCuts" expression="execution(* com.gqgx..*ServiceImpl.*(..))" />  
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceCuts" />
+	</aop:config>
+</beans>

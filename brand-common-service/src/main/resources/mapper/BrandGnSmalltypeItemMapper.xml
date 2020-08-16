@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gqgx.common.mapper.BrandGnSmalltypeItemMapper">
+  <resultMap id="BaseResultMap" type="com.gqgx.common.entity.BrandGnSmalltypeItem">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="small_type_id" jdbcType="BIGINT" property="smallTypeId" />
+    <result column="group_no" jdbcType="VARCHAR" property="groupNo" />
+    <result column="project_no" jdbcType="VARCHAR" property="projectNo" />
+    <result column="project_cnname" jdbcType="VARCHAR" property="projectCnname" />
+    <result column="project_enname" jdbcType="VARCHAR" property="projectEnname" />
+    <result column="record_status" jdbcType="CHAR" property="recordStatus" />
+    <result column="update_count" jdbcType="INTEGER" property="updateCount" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="updater_id" jdbcType="BIGINT" property="updaterId" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    A.id, A.small_type_id, A.group_no, A.project_no, A.project_cnname, A.project_enname, A.record_status,
+    A.update_count, A.create_date, A.creator_id, A.update_date, A.updater_id
+  </sql>
+
+  <select id="findByBrandGnSmalltypeItemVo" resultMap="BaseResultMap">
+    SELECT
+      <include refid="Base_Column_List" />
+      FROM brand_gn_smalltype_item A INNER JOIN brand_small_type B
+      ON A.small_type_id=B.id
+    <where>
+      <if test="largeTypeId != null and largeTypeId !=0 ">
+        B.large_type_id=#{largeTypeId}
+      </if>
+      <if test="smallTypeId != null and smallTypeId != 0">
+        AND A.small_type_id = #{smallTypeId}
+      </if>
+      <if test="filter != null and filter !='' ">
+        AND (A.group_no like "%"#{filter}"%"
+        or A.project_no like "%"#{filter}"%"
+        or A.project_cnname like "%"#{filter}"%"
+        or A.project_enname like "%"#{filter}"%")
+      </if>
+      <if test="recordStatus != null and recordStatus != ''">
+        AND record_status = #{recordStatus}
+      </if>
+    </where>
+  </select>
+  <!--根据主键id批量删除-->
+  <delete id="deleteByIds">
+    delete from brand_gn_smalltype_item where id in
+    <foreach item="id" collection="ids" open="(" separator="," close=")">
+      #{id}
+    </foreach>
+  </delete>
+</mapper>
